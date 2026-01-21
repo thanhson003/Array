@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Caro Game Simple</title>
+  <style>
+    body { font-family: monospace; text-align: center; }
+    #carogame { font-size: 20px; letter-spacing: 5px; }
+  </style>
+</head>
+<body>
+<h3>Caro Game Simple</h3>
+<p id="carogame"></p>
+<input type="button" value="Change Value" onclick="ChangeValue()">
+
+<script>
+  let b = document.getElementById('carogame');
+  let board = [];
+  let h = 1;
+
+  // 1. Khởi tạo mảng 2 chiều 5x5
+  for (let i = 0; i < 5; i++) {
+    board[i] = ['(.)', '(.)', '(.)', '(.)', '(.)'];
+  }
+
+  // 2. Hàm hiển thị bàn cờ
+  function displayBoard() {
+    let data = '';
+    for (let i = 0; i < 5; i++) {
+      data += '<br>';
+      for (let j = 0; j < 5; j++) {
+        data += board[i][j] + '&ensp;';
+      }
+    }
+    b.innerHTML = data;
+  }
+
+  displayBoard(); // Gọi hiển thị lần đầu
+
+  function ChangeValue() {
+    let positionX = parseInt(prompt("Nhập tọa độ X (0-4):"));
+    let positionY = parseInt(prompt("Nhập tọa độ Y (0-4):"));
+
+    // Kiểm tra nếu vị trí đã được đánh dấu chưa
+    if (board[positionX][positionY] !== '.') {
+      alert("Vị trí này đã có người đánh!");
+      return;
+    }
+
+    // Đổi lượt X và O
+    if (h % 2 === 0) {
+      board[positionX][positionY] = 'x';
+    } else {
+      board[positionX][positionY] = 'o';
+    }
+    h++;
+    displayBoard();
+
+    // 3. Kiểm tra thắng (duyệt mảng 5x5)
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        // Kiểm tra hàng ngang (3 ô liên tiếp)
+        if (j <= 2 && board[i][j] !== '.' && board[i][j] === board[i][j+1] && board[i][j] === board[i][j+2]) {
+          alert(board[i][j].toUpperCase() + " thắng!");
+        }
+        // Kiểm tra hàng dọc (3 ô liên tiếp)
+        if (i <= 2 && board[i][j] !== '.' && board[i][j] === board[i+1][j] && board[i][j] === board[i+2][j]) {
+          alert(board[i][j].toUpperCase() + " thắng!");
+        }
+      }
+    }
+  }
+</script>
+</body>
+</html>

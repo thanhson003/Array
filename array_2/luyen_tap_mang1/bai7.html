@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let v = parseInt(prompt("Enter number"));
+    let a = [12, -5, 44, -26, -4, 7, 1, -2, 3, 96];
+    let count = -1;
+    for (let i = 0; i < a.length; i++){
+        if(v === a[i]){
+            count = i;
+            break;
+        }
+    }
+    if (count !== -1){
+        alert("Đã tìm thấy " + v + " tại vị trí " + count);
+        for (let i = count; i < a.length - 1; i++){
+            a[i] = a[i + 1];
+        }
+    }else {
+        alert(v + " không nằm trong mảng.");
+    }
+</script>
+</body>
+</html>

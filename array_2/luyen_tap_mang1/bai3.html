@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a = [12, 5, 44, 26, 4, 7, 1, 2, 3, 96];
+    let tong = 0;
+    let max = a[0];
+    for (let i = 0; i < a.length; i++) {
+        tong += a[i];
+        if (max < a[i]) {
+            max = a[i];
+        }
+    }
+    let tb = tong / a.length
+
+    console.log("Gia tri lon nhat la: " + max);
+    console.log("Gia tri trung binh: " + tb);
+</script>
+</body>
+</html>

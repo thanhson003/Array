@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let v = parseInt(prompt("Enter number"));
+        let a = [12, -5, 44, -26, -4, 7, 1, -2, 3, 96];
+        let count = false;
+        for (let i = 0; i < a.length; i++){
+            if(v === a[i]){
+              count = true;
+              break;
+            }
+        }
+        if (count === true){
+            alert(v + " is a number");
+        }else {
+            alert(v + " is not a number");
+        }
+    </script>
+</body>
+</html>
